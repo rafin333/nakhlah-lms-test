@@ -28,7 +28,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchFAQs = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}faqs`);
+        const response = await fetch("https://devapi.nakhlah.xyz/api/faqs");
         const data = await response.json();
         if (response.ok) {
           setFaqs(data?.data || []);
@@ -75,27 +75,27 @@ const ProfilePage = () => {
     const profileData = new FormData();
     const fileInput = document.getElementById("idInputFile");
     const file = fileInput?.files[0];
-
+  
     if (file) {
       profileData.append("files.profilePicture", file);
     }
     profileData.append("data", JSON.stringify(formData));
-
+  
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}registereds`, {
+      const response = await fetch("https://devapi.nakhlah.xyz/api/registereds", {
         method: "PATCH",
         body: profileData,
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
+  
       const result = await response.json();
       if (response.ok) {
         toast.success("Profile updated successfully!");
-
+  
         if (file) {
-          setImage(URL.createObjectURL(file));
+          setImage(URL.createObjectURL(file)); 
         }
       } else {
         throw new Error(result?.message || "Failed to update profile");
@@ -104,7 +104,7 @@ const ProfilePage = () => {
       toast.error(error.message);
     }
   };
-
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -131,7 +131,7 @@ const ProfilePage = () => {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}auth/change-password`, {
+      const response = await fetch("https://devapi.nakhlah.xyz/api/auth/change-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -182,14 +182,14 @@ const ProfilePage = () => {
   // );
 
   const [planName, setPlanName] = useState('Loading...');
-  const [profilePicture, setProfilePicture] = useState('/default-profile.png');
+  const [profilePicture, setProfilePicture] = useState('/default-profile.png'); 
 
   useEffect(() => {
     const fetchSubscriptionAndProfile = async () => {
       try {
         const { token } = context;
 
-        const subscriptionResponse = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}subscriptions?populate=*`, {
+        const subscriptionResponse = await fetch('https://devapi.nakhlah.xyz/api/subscriptions?populate=*', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -205,7 +205,7 @@ const ProfilePage = () => {
         const fetchedPlanName = subscriptionData?.data?.subscription_plan?.planName || 'No Plan';
         setPlanName(fetchedPlanName);
 
-        const profileResponse = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}registereds?populate=*`, {
+        const profileResponse = await fetch('https://devapi.nakhlah.xyz/api/registereds?populate=*', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -219,7 +219,7 @@ const ProfilePage = () => {
 
         const profileData = await profileResponse.json();
         const pictureUrl = profileData?.data?.profilePicture?.url
-          ? `${process.env.NEXT_PUBLIC_API_BASE_URL_MEDIA}${profileData.data.profilePicture.url}`
+          ? `https://devapi.nakhlah.xyz${profileData.data.profilePicture.url}`
           : '/default-profile.png';
 
         setProfilePicture(pictureUrl);
@@ -231,7 +231,7 @@ const ProfilePage = () => {
 
     fetchSubscriptionAndProfile();
   }, []);
-
+  
   const renderProfileHeader = () => {
 
     return (
@@ -250,7 +250,7 @@ const ProfilePage = () => {
             />
           </div>
         </div>
-
+  
         <div>
           <h1 className="text-2xl font-bold text-gray-800 pb-1">
             {profile?.username || 'User'}
@@ -281,7 +281,7 @@ const ProfilePage = () => {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}feedbacks?populate=*`, {
+      const response = await fetch("https://devapi.nakhlah.xyz/api/feedbacks?populate=*", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -443,7 +443,7 @@ const ProfilePage = () => {
                 Update Profile
               </button>
             </form>
-          </div>
+          </div>       
         );
 
       case "Reset Password":

@@ -39,14 +39,14 @@ export default function StoreComponent() {
     const fetchUserSubscription = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}subscriptions?populate=*`,
+          "https://devapi.nakhlah.xyz/api/subscriptions?populate=*",
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${token}`
             },
           }
         );
-
+  
         if (response.data?.data) {
           const subscriptionPlan = response.data.data.subscription_plan;
           setUserSubscription({
@@ -58,12 +58,12 @@ export default function StoreComponent() {
         console.error("Error fetching user subscription:", error);
       }
     };
-
+  
     fetchUserSubscription();
   }, []);
-
-
-
+  
+  
+  
 
   const handleBuyNowClick = (packagePlan) => {
     setSelectedPlan(packagePlan)
@@ -138,7 +138,7 @@ export default function StoreComponent() {
 
                 {userSubscription?.price > 0 && (
                   <div className="mb-4 p-4 rounded-lg text-gray-700 "
-                    style={{background: "rgb(251, 214, 135)",borderLeft: "4px solid #FFD700"}}>
+                  style={{background: "rgb(251, 214, 135)",borderLeft: "4px solid #FFD700"}}>
                     <strong>Tip:</strong> Users with an active subscription do not need to purchase date packages separately.
                   </div>
                 )}
