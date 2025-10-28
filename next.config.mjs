@@ -17,6 +17,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'testapi.nakhlah.xyz',
+      },
+      {
+        protocol: 'https',
         hostname: 'randomuser.me',
       },
     ],
