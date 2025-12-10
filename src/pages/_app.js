@@ -20,6 +20,7 @@ import Learn from "./learn";
 import { getFromLocalStorage } from "@/utils/local-storage";
 import { authKey } from "@/constants/storageKey";
 import { UndoIcon } from "lucide-react";
+import Support from "./support";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -59,10 +60,10 @@ const App = ({ Component, pageProps }) => {
         <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
           <Provider store={store}>
             {route === "/privacyterms" && <PrivacyTerms />}
+            {route === "/support" && <Support />}
             {route === "/query" && <Query />}
             {route === "/" && <Landing />}
             
-            {/* Add this line for reset password */}
             {route === "/reset-password" && <Component {...pageProps} />}
 
             <ToastContainer
