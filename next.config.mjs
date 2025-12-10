@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'testapi.nakhlah.xyz',
+        hostname: 'testapi.siamrtx.space',
       },
       {
         protocol: 'https',
