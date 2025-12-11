@@ -109,7 +109,7 @@ function SupportPage() {
               <p className="flex items-center mb-2">
                 <span className="font-semibold w-24">Email:</span>
                 <a href="mailto:support@nakhlah-lms.com" className="text-blue-600 hover:underline">
-                  support@nakhlah-lms.com
+                  support@nakhlah.net
                 </a>
               </p>
             </div>
