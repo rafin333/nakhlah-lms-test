@@ -8,15 +8,15 @@ function FloatingBanner({ text, icon, index }) {
       style={{ transform: "translate(25%, -50%)" }}
     >
       <div
-        // style={{
-        //   // position: "absolute",
-        //   bottom: `-${index * 115 + 5}vh`,
-        //   left: "10vh",
-        // }} 
+      // style={{
+      //   // position: "absolute",
+      //   bottom: `-${index * 115 + 5}vh`,
+      //   left: "10vh",
+      // }} 
       >
         <img
           src={icon}
-          alt="Unit Icon" 
+          alt="Unit Icon"
           width={"22%"}
         />
         <p
@@ -24,7 +24,7 @@ function FloatingBanner({ text, icon, index }) {
           style={{
             position: "absolute",
             top: "33%",
-            left: "6%",
+            left: "8.5%",
             fontSize: "calc(6px + .5vw)"
           }}
         >
